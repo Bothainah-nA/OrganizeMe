@@ -1,16 +1,24 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    # لوحة التحكم
     path('admin/', admin.site.urls),
 
-    # التطبيق الرئيسي للمنتجات (الصفحة الرئيسية للموقع)
-    path('', include('products.urls')),
+    # 🏠 الصفحة الرئيسية
+    path('', include('products.urls')),   # الصفحة الرئيسية وأقسام المنتجات
 
-    # حسابات المستخدمين
+    # 🛍️ روابط صفحات المنتجات مع البادئة /products/
+    path('products/', include('products.urls')),
+
+    # 🔐 الحسابات
     path('accounts/', include('accounts.urls')),
 
-    # الطلبات
+    # 🧾 الطلبات
     path('orders/', include('orders.urls')),
 ]
+
+# 📸 عرض ملفات الميديا أثناء التطوير
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

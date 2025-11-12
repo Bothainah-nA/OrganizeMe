@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دفاتر وأجندات | Organize Me</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+      color: #333;
+    }
+
+    /* الشريط العلوي */
+    header {
+      background-color: #d6e4d0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #2e7d32;
+      object-fit: cover;
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      color: #1b5e20;
+      margin: 0;
+    }
+
+    nav a {
+      color: #1b5e20;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: #388e3c; }
+
+    /* عنوان القسم */
+    .page-header {
+      background: linear-gradient(135deg, #d6e4d0, #f1f5f0);
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .page-header h1 {
+      color: #2e7d32;
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .page-header p {
+      color: #555;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    /* شبكة المنتجات */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 50px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .product h3 {
+      color: #1b5e20;
+      font-size: 18px;
+      margin: 15px 0 10px;
+    }
+
+    .product p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .product button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .product button:hover {
+      background-color: #256629;
+    }
+
+    footer {
+      background-color: #2e473b;
+      color: #f1efe9;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="{% static 'images/logo.PNG' %}" alt="Organize Me Logo">
+    <h1>Organize Me</h1>
+  </div>
+  <nav>
+    <a href="/">الرئيسية</a>
+    <a href="/products/">المنتجات</a>
+    <a href="/about/">عن المتجر</a>
+    <a href="/contact/">تواصل معنا</a>
+  </nav>
+</header>
+
+<section class="page-header">
+  <h1>دفاتر وأجندات</h1>
+  <p>خطط لأيامك بأسلوب أنيق ومنظم — مجموعة من أجمل الدفاتر والأجندات!</p>
+</section>
+
+<section class="products">
+  <div class="product">
+    <img src="{% static 'images/notebook1.jpg' %}" alt="دفتر تخطيط">
+    <h3>دفتر المهام اليومية</h3>
+    <p>دفتر أنيق بتصميم بسيط لتنظيم مهامك اليومية.</p>
+    <button>أضف إلى السلة 🛒</button>
+  </div>
+
+  <div class="product">
+    <img src="{% static 'images/notebook2.jpg' %}" alt="أجندة">
+    <h3>أجندة أسبوعية</h3>
+    <p>تصميم عملي يساعدك على تخطيط أسبوعك بإبداع.</p>
+    <button>أضف إلى السلة 🛒</button>
+  </div>
+</section>
+
+<footer>
+  © 2025 Organize Me — جميع الحقوق محفوظة 🌿
+</footer>
+
+</body>
+</html>

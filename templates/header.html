@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Organize Me</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+    }
+
+    header {
+      background: linear-gradient(90deg, #e8e4da, #d6e3d2);
+      color: #2e473b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* منطقة الشعار */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img {
+      width: 55px;
+      height: 55px;
+      border-radius: 10px; /* مربع بزوايا ناعمة */
+      border: 2px solid #b8b08d;
+      object-fit: cover;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo-text {
+      font-weight: bold;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: #2e473b;
+    }
+
+    /* القائمة */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2e473b;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #b89a61;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <!-- استخدمي وسم static لتحميل الصورة -->
+      <img src="{% static 'images/logo.PNG' %}" alt="Organize Me Logo">
+      <div class="logo-text">Organize Me</div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">منتجات</a></li>
+        <li><a href="#">عن المتجر</a></li>
+        <li><a href="#">تواصل معنا</a></li>
+      </ul>
+    </nav>
+  </header>
+</body>
+</html>

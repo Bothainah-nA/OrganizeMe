@@ -9,8 +9,3 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = ('city', 'country')
     readonly_fields = ('joined_at',)
     ordering = ('-joined_at',)
-    list_display_links = ('user',)
-
-    class Meta:
-        verbose_name = "ملف المستخدم"
-        verbose_name_plural = "ملفات المستخدمين"

@@ -1,31 +1,29 @@
 from django.db import models
 
-# التصنيفات العامة (دفاتر، أدوات، منتجات رقمية..)
+# 🏷️ التصنيفات (دفاتر – مكتب – تطوير الذات – رقمية)
 class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="اسم التصنيف")
-    description = models.TextField(blank=True, null=True, verbose_name="الوصف")
+    name = models.CharField(max_length=100, verbose_name="اسم القسم")
+    slug = models.SlugField(unique=True, verbose_name="رابط القسم")
+
+    class Meta:
+        verbose_name = "التصنيف"
+        verbose_name_plural = "التصنيفات"
 
     def __str__(self):
         return self.name
 
 
-# المنتج
+# 🛍️ المنتجات
 class Product(models.Model):
-    PRODUCT_TYPES = [
-        ('physical', 'ملموس'),
-        ('digital', 'رقمي'),
-    ]
+    name = models.CharField(max_length=200, verbose_name="اسم المنتج")
+    description = models.TextField(verbose_name="الوصف", blank=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="السعر")
+    image = models.ImageField(upload_to='products/', verbose_name="صورة المنتج", blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', verbose_name="القسم")
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-    name = models.CharField(max_length=150, verbose_name="اسم المنتج")
-    description = models.TextField(verbose_name="الوصف")
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="السعر")
-    product_type = models.CharField(max_length=10, choices=PRODUCT_TYPES, default='physical', verbose_name="النوع")
-    image = models.ImageField(upload_to='products/', blank=True, null=True, verbose_name="صورة المنتج")
-    digital_file = models.FileField(upload_to='digital_products/', blank=True, null=True, verbose_name="الملف الرقمي")
-    stock = models.PositiveIntegerField(default=0, verbose_name="الكمية المتوفرة")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        verbose_name = "المنتج"
+        verbose_name_plural = "المنتجات"
 
     def __str__(self):
         return self.name
