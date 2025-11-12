@@ -1,89 +1,96 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <title>Organize Me</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Cairo", sans-serif;
-    }
+<header>
+  <div class="logo">
+    <img src="{% static 'images/logo.PNG' %}" alt="Organize Me Logo">
+    <h1>Organize Me</h1>
+  </div>
+  <nav>
+    <a href="/">الرئيسية</a>
+    <a href="/products/">المنتجات</a>
+    <a href="/about/">عن المتجر</a>
+    <a href="/contact/">تواصل معنا</a>
 
+    <!-- ✅ حالة المستخدم -->
+    {% if request.user.is_authenticated %}
+      <div class="user-info">
+        <span>مرحبًا، {{ request.user.username }} 👋</span>
+        <a href="/accounts/logout/" class="btn-logout">تسجيل خروج</a>
+      </div>
+    {% else %}
+      <div class="auth-buttons">
+        <a href="/accounts/register/" class="btn-register">إنشاء حساب</a>
+        <a href="/accounts/login/" class="btn-login">تسجيل دخول</a>
+      </div>
+    {% endif %}
+  </nav>
+
+  <style>
     header {
-      background: linear-gradient(90deg, #e8e4da, #d6e3d2);
-      color: #2e473b;
+      background-color: #d6e4d0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    /* منطقة الشعار */
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img {
+      width: 45px; height: 45px; border-radius: 50%;
+      border: 2px solid #2e7d32; object-fit: cover;
     }
-
-    .logo-container img {
-      width: 55px;
-      height: 55px;
-      border-radius: 10px; /* مربع بزوايا ناعمة */
-      border: 2px solid #b8b08d;
-      object-fit: cover;
-      background-color: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .logo-text {
-      font-weight: bold;
-      font-size: 22px;
-      letter-spacing: 1px;
-      color: #2e473b;
-    }
-
-    /* القائمة */
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-    }
+    .logo h1 { font-size: 20px; color: #1b5e20; margin: 0; }
 
     nav a {
-      text-decoration: none;
-      color: #2e473b;
-      font-weight: 500;
-      transition: color 0.3s;
+      color: #1b5e20; text-decoration: none; margin: 0 15px;
+      font-weight: 600; transition: color 0.3s;
+    }
+    nav a:hover { color: #388e3c; }
+
+    .auth-buttons, .user-info {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 15px;
     }
 
-    nav a:hover {
-      color: #b89a61;
+    .btn-register, .btn-login, .btn-logout {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-register {
+      background-color: #2e7d32;
+      color: white;
+    }
+    .btn-register:hover { background-color: #256629; }
+
+    .btn-login {
+      border: 2px solid #2e7d32;
+      color: #2e7d32;
+      background-color: white;
+    }
+    .btn-login:hover {
+      background-color: #e8f5e9;
+    }
+
+    .btn-logout {
+      background-color: #a71d2a;
+      color: white;
+      border: none;
+    }
+    .btn-logout:hover { background-color: #8c1622; }
+
+    .user-info span {
+      color: #1b5e20;
+      font-weight: bold;
     }
   </style>
-</head>
-<body>
-  <header>
-    <div class="logo-container">
-      <!-- استخدمي وسم static لتحميل الصورة -->
-      <img src="{% static 'images/logo.PNG' %}" alt="Organize Me Logo">
-      <div class="logo-text">Organize Me</div>
-    </div>
-
-    <nav>
-      <ul>
-        <li><a href="#">الرئيسية</a></li>
-        <li><a href="#">منتجات</a></li>
-        <li><a href="#">عن المتجر</a></li>
-        <li><a href="#">تواصل معنا</a></li>
-      </ul>
-    </nav>
-  </header>
-</body>
-</html>
+</header>

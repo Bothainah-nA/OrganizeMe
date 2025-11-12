@@ -7,7 +7,6 @@
   <title>Organize Me — متجر التنظيم والتخطيط</title>
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
     body {
       font-family: 'Cairo', sans-serif;
@@ -17,50 +16,6 @@
       color: #333;
     }
 
-    /* ✅ الشريط العلوي */
-    header {
-      background-color: #d6e4d0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 40px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      border: 2px solid #2e7d32;
-      object-fit: cover;
-    }
-
-    .logo h1 {
-      font-size: 20px;
-      color: #1b5e20;
-      margin: 0;
-    }
-
-    nav a {
-      color: #1b5e20;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover { color: #388e3c; }
-
-    /* ✅ البنر */
     .hero {
       position: relative;
       height: 380px;
@@ -89,18 +44,9 @@
       border-radius: 16px;
     }
 
-    .hero-content h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-      color: #fff;
-    }
+    .hero-content h1 { font-size: 38px; margin-bottom: 10px; color: #fff; }
+    .hero-content p { font-size: 18px; color: #e8f5e9; }
 
-    .hero-content p {
-      font-size: 18px;
-      color: #e8f5e9;
-    }
-
-    /* ✅ أقسام بعد البنر */
     .categories {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -115,8 +61,7 @@
       box-shadow: 0 3px 10px rgba(0,0,0,0.08);
       text-align: center;
       padding: 30px 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
+      transition: 0.3s;
       text-decoration: none;
       color: #1b5e20;
     }
@@ -128,40 +73,19 @@
     }
 
     .category i {
-      font-size: 36px;
+      font-size: 32px;
       color: #2e7d32;
       margin-bottom: 15px;
     }
 
-    .category h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-      color: #1b5e20;
-    }
-
-    .category p {
-      color: #555;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* ✅ قسم الاشتراك */
     .subscribe {
       text-align: center;
       padding: 60px 20px;
       background-color: #f4f7f4;
     }
 
-    .subscribe h2 {
-      color: #1b5e20;
-      margin-bottom: 10px;
-    }
-
-    .subscribe p {
-      color: #555;
-      margin-bottom: 20px;
-    }
-
+    .subscribe h2 { color: #1b5e20; margin-bottom: 10px; }
+    .subscribe p { color: #555; margin-bottom: 20px; }
     .subscribe input {
       padding: 12px 15px;
       width: 250px;
@@ -170,7 +94,6 @@
       margin-left: 10px;
       font-family: 'Cairo', sans-serif;
     }
-
     .subscribe button {
       background-color: #2e7d32;
       color: white;
@@ -180,25 +103,13 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .subscribe button:hover { background-color: #256629; }
   </style>
 </head>
 <body>
 
-  <!-- ✅ الشريط العلوي -->
-  <header>
-    <div class="logo">
-      <img src="{% static 'images/logo.PNG' %}" alt="Organize Me Logo">
-      <h1>Organize Me</h1>
-    </div>
-    <nav>
-      <a href="/">الرئيسية</a>
-      <a href="/products/">المنتجات</a>
-      <a href="/about/">عن المتجر</a>
-      <a href="/contact/">تواصل معنا</a>
-    </nav>
-  </header>
+  <!-- ✅ استدعاء الشريط العلوي -->
+  {% include 'header.html' %}
 
   <!-- ✅ البنر -->
   <section class="hero">
@@ -210,34 +121,32 @@
 
   <!-- ✅ الأقسام -->
   <section class="categories">
-
-    <a href="/products/notebooks/" class="category">
+    <a href="/notebooks/" class="category">
       <i class="fa-solid fa-book-open"></i>
       <h3>دفاتر وأجندات</h3>
       <p>خطط لأيامك بأسلوب أنيق ومنظم. تصميمات تلهمك يوميًا.</p>
     </a>
 
-    <a href="/products/office/" class="category">
+    <a href="/office/" class="category">
       <i class="fa-solid fa-briefcase"></i>
       <h3>تنظيم المكتب</h3>
       <p>منتجات تساعدك على خلق بيئة عمل مريحة ومليئة بالإلهام.</p>
     </a>
 
-    <a href="/products/self-development/" class="category">
+    <a href="/self-development/" class="category">
       <i class="fa-solid fa-seedling"></i>
       <h3>تطوير الذات</h3>
       <p>بطاقات تحفيزية وأدوات تعزز نموك وتوازن حياتك.</p>
     </a>
 
-    <a href="/products/digital/" class="category">
+    <a href="/digital/" class="category">
       <i class="fa-solid fa-laptop"></i>
       <h3>منتجات رقمية</h3>
       <p>قوالب جاهزة للطباعة وتنظيم إلكتروني ذكي.</p>
     </a>
-
   </section>
 
-  <!-- ✅ قسم الاشتراك -->
+  <!-- ✅ الاشتراك -->
   <section class="subscribe">
     <h2>انضم إلى نشرتنا الشهرية ✨</h2>
     <p>احصل على Planner جديد كل شهر مباشرة إلى بريدك الإلكتروني.</p>
@@ -247,8 +156,7 @@
     </form>
   </section>
 
-  <!-- ✅ التذييل -->
+  <!-- ✅ الفوتر -->
   {% include 'footer.html' %}
-
 </body>
 </html>
